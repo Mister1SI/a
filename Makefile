@@ -11,7 +11,7 @@ run: z
 	@as -o $@ $<
 
 z: $(obj)
-	@ld $^ -o z
+	@ld $^ -o z 
 	@rm $(obj)
 
 
