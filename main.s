@@ -38,16 +38,21 @@ _start:
 	svc #0
 	mov x19, x0				// Store fd in x19
 
+	mov x0, x19
+	bl _preprocessor
+
+	# mmap function
+	/*
 	mov x8, #222			// mmap
 	mov x0, xzr				// Supply no address
-	mov x1, xzr				// Length
-	mov x2, xzr				// prot
-	mov x3, xzr				// flags
+	mov x1, #256			// Length
+	mov x2, #0b11			// prot		read-write
+	mov x3, #0x01			// flags	MAP_SHARED
 	mov x4, x19				// fd
 	mov x5, xzr				// offset
 	svc #0
 	mov x20, x0				// Store void* into x20
-
+	*/
 
 	mov x8, #57				// close
 	mov x0, x19				// fd
